@@ -1172,9 +1172,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
       }
 
       let ordinal = self.ordinal_by_module.get(&module).unwrap_or_else(|| {
-        panic!(
-          "expected a module ordinal for identifier '{module}', but none was found."
-        )
+        panic!("expected a module ordinal for identifier '{module}', but none was found.")
       });
       if active_state.is_true() && min_available_modules.bit(*ordinal) {
         // already in parent chunks, skip it for now
@@ -1630,9 +1628,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
         .iter()
         .filter_map(|module| {
           let ordinal = self.ordinal_by_module.get(module).unwrap_or_else(|| {
-            panic!(
-              "expected a module ordinal for identifier '{module}', but none was found."
-            )
+            panic!("expected a module ordinal for identifier '{module}', but none was found.")
           });
           if !cgi.min_available_modules.bit(*ordinal) {
             Some(*module)
@@ -1669,9 +1665,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
           if active_state.is_true() {
             active_connections.push(i);
             let module_ordinal = self.ordinal_by_module.get(module).unwrap_or_else(|| {
-              panic!(
-                "expected a module ordinal for identifier '{module}', but none was found."
-              )
+              panic!("expected a module ordinal for identifier '{module}', but none was found.")
             });
             if cgi.min_available_modules.bit(*module_ordinal) {
               cgi.skipped_items.insert(*module);

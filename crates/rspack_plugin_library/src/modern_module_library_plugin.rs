@@ -171,9 +171,7 @@ fn render_startup(
     for (final_name, info_name) in exports_with_property_access.iter() {
       let var_name = format!("__webpack_exports__{}", to_identifier(info_name));
 
-      source.add(RawSource::from(format!(
-        "var {var_name} = {final_name};\n"
-      )));
+      source.add(RawSource::from(format!("var {var_name} = {final_name};\n")));
 
       exports.push(format!("{var_name} as {info_name}"));
     }

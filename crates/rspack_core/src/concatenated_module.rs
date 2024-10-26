@@ -1180,10 +1180,7 @@ impl Module for ConcatenatedModule {
       match info {
         ModuleInfo::Concatenated(info) => {
           result.add(RawSource::from(
-            format!(
-              "\n;// CONCATENATED MODULE: {module_readable_identifier}\n"
-            )
-            .as_str(),
+            format!("\n;// CONCATENATED MODULE: {module_readable_identifier}\n").as_str(),
           ));
           // https://github.com/webpack/webpack/blob/ac7e531436b0d47cd88451f497cdfd0dad41535d/lib/optimize/ConcatenatedModule.js#L1582
           result.add(info.source.clone().expect("should have source"));

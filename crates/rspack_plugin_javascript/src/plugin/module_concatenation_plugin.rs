@@ -100,9 +100,7 @@ pub struct ModuleConcatenationPlugin {
 impl ModuleConcatenationPlugin {
   fn format_bailout_warning(&self, module: ModuleIdentifier, warning: &Warning) -> String {
     match warning {
-      Warning::Problem(id) => {
-        format_bailout_reason(&format!("Cannot concat with {module}: {id}"))
-      }
+      Warning::Problem(id) => format_bailout_reason(&format!("Cannot concat with {module}: {id}")),
       Warning::Id(id) => {
         let reason = self.get_inner_bailout_reason(id);
         let reason_with_prefix = match reason {
@@ -110,9 +108,7 @@ impl ModuleConcatenationPlugin {
           None => "".to_string(),
         };
         if id == &module {
-          format_bailout_reason(&format!(
-            "Cannot concat with {module}{reason_with_prefix}"
-          ))
+          format_bailout_reason(&format!("Cannot concat with {module}{reason_with_prefix}"))
         } else {
           format_bailout_reason(&format!(
             "Cannot concat with {module} because of {id}{reason_with_prefix}"

@@ -722,10 +722,7 @@ impl ESMExportImportedSpecifierDependency {
     runtime_requirements.insert(RuntimeGlobals::EXPORTS);
     runtime_requirements.insert(RuntimeGlobals::DEFINE_PROPERTY_GETTERS);
     let mut export_map = vec![];
-    export_map.push((
-      key.into(),
-      format!("/* {comment} */ {return_value}").into(),
-    ));
+    export_map.push((key.into(), format!("/* {comment} */ {return_value}").into()));
     let module_graph = compilation.get_module_graph();
     let module = module_graph
       .module_by_identifier(&module.identifier())
