@@ -1173,8 +1173,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
 
       let ordinal = self.ordinal_by_module.get(&module).unwrap_or_else(|| {
         panic!(
-          "expected a module ordinal for identifier '{}', but none was found.",
-          module
+          "expected a module ordinal for identifier '{module}', but none was found."
         )
       });
       if active_state.is_true() && min_available_modules.bit(*ordinal) {
@@ -1632,8 +1631,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
         .filter_map(|module| {
           let ordinal = self.ordinal_by_module.get(module).unwrap_or_else(|| {
             panic!(
-              "expected a module ordinal for identifier '{}', but none was found.",
-              module
+              "expected a module ordinal for identifier '{module}', but none was found."
             )
           });
           if !cgi.min_available_modules.bit(*ordinal) {
@@ -1672,8 +1670,7 @@ Or do you want to use the entrypoints '{name}' and '{runtime}' independently on 
             active_connections.push(i);
             let module_ordinal = self.ordinal_by_module.get(module).unwrap_or_else(|| {
               panic!(
-                "expected a module ordinal for identifier '{}', but none was found.",
-                module
+                "expected a module ordinal for identifier '{module}', but none was found."
               )
             });
             if cgi.min_available_modules.bit(*module_ordinal) {

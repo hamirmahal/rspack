@@ -10,8 +10,7 @@ impl JsRegExpExt for JsRegExp {
     let flags = self.flags();
     rspack_regex::RspackRegex::with_flags(&pat, &flags).unwrap_or_else(|_| {
       panic!(
-        "Try convert {:?} to RspackRegex with flags: {:?} failed",
-        pat, flags
+        "Try convert {pat:?} to RspackRegex with flags: {flags:?} failed"
       )
     })
   }

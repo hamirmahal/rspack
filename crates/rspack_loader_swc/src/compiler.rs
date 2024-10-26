@@ -241,7 +241,7 @@ fn read_config(opts: &Options, name: &FileName) -> Result<Option<Config>, Error>
     }
   };
 
-  res.with_context(|| format!("failed to read .swcrc file for input file at `{}`", name))
+  res.with_context(|| format!("failed to read .swcrc file for input file at `{name}`"))
 }
 
 pub(crate) struct SwcCompiler {
@@ -292,7 +292,7 @@ impl SwcCompiler {
     }
 
     if env::var("SWC_DEBUG").unwrap_or_default() == "1" {
-      res = res.with_context(|| format!("Parser config: {:?}", syntax));
+      res = res.with_context(|| format!("Parser config: {syntax:?}"));
     }
 
     res
@@ -414,7 +414,7 @@ impl SwcCompiler {
         match data_url {
           Some(data_url) => {
             let url = Url::parse(data_url)
-              .with_context(|| format!("failed to parse inline source map url\n{}", data_url))?;
+              .with_context(|| format!("failed to parse inline source map url\n{data_url}"))?;
 
             let idx = match url.path().find("base64,") {
               Some(v) => v,
@@ -498,8 +498,7 @@ impl SwcCompiler {
                   || {
                     format!(
                       "failed to read input source map
-                                from file at {}",
-                      path
+                                from file at {path}"
                     )
                   },
                 )?))

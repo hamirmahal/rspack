@@ -342,7 +342,7 @@ impl ExposeModuleMap {
           ),
           "",
         );
-        format!("return {}.then({});", block_promise, module_raw)
+        format!("return {block_promise}.then({module_raw});")
       };
       module_map.push((name.to_string(), str));
     }
@@ -364,9 +364,8 @@ impl ExposeModuleMap {
       .join("\n");
     format!(
       r#"{{
-  {}
-}}"#,
-      module_map
+  {module_map}
+}}"#
     )
   }
 }
